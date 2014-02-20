@@ -47,11 +47,39 @@ public class ListaLigada<T> {
     public ListaLigada<T> invierteLista() {
         ListaLigada<T> ListaRetorno = new ListaLigada<>();
         Nodo<T> q = p;
-        while(q!=null){
+        while (q != null) {
             ListaRetorno.insertaInicio(q.getValor());
-            q=q.getLiga();
+            q = q.getLiga();
         }
-        
+
         return ListaRetorno;
+    }
+
+    public boolean buscar(T dato) {
+        // Variable Auxiliar
+        boolean resultado = false;
+        Nodo<T> q = p;
+        // Ciclo que recorra la lista
+        while (q != null) {
+            if (q.getValor().equals(dato)) {
+                resultado = true;
+            }
+            q = q.getLiga();
+        }
+        return resultado;
+    }
+
+    public void insertarAntesDeX(T nuevo, T referencia) {
+        Nodo<T> q = p;
+        Nodo<T> s = null;
+        boolean flag = false;
+        while (q != null && !flag) {
+            if (q.getValor().equals(referencia)) {
+                flag = true;
+            }
+            s = q;
+            q = q.getLiga();
+        }
+        // Aca q va a estar en el valor que es, siempre y cuando flag = true
     }
 }
